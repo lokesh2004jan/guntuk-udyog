@@ -9,7 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@CrossOrigin(origins = "http://192.168.0.105:8081")
+
 @RequestMapping("/api/contact")
 public class ContactController {
 
