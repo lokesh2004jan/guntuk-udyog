@@ -1,9 +1,11 @@
 package com.example.guntuk.udyog.service;
 
+import jakarta.mail.internet.MimeMessage;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
 @Slf4j
@@ -12,18 +14,19 @@ public class emailService {
     @Autowired
     JavaMailSender javaMailSender;
 
-    public void sendEmail(String to,String subject,String body){
+    public void sendEmail(String to, String subject, String htmlBody) {
         try {
+            MimeMessage message = javaMailSender.createMimeMessage();
+            MimeMessageHelper helper = new MimeMessageHelper(message, true, "UTF-8");
 
-            SimpleMailMessage mail =new SimpleMailMessage();
+            helper.setTo(to);
+            helper.setSubject(subject);
+            helper.setText(htmlBody, true); // true = treat as HTML
 
-            mail.setTo(to);
-            mail.setSubject(subject);
-            mail.setText(body);
-            javaMailSender.send(mail);
+            javaMailSender.send(message);
 
         } catch (Exception e) {
-            log.error("exception while sending mail",e);
+            log.error("Exception while sending HTML mail", e);
         }
     }
 }
