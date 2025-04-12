@@ -8,4 +8,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ContactMessageRepository extends JpaRepository<ContactMessage, Long> {
     // You can define custom queries if needed
+
 }

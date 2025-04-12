@@ -27,6 +27,10 @@ public class ContactController {
         System.out.println(contactMessage);
         contactMessageService.saveContactMessage(contactMessage);
 
+
+
+
+
         String mail = contactMessage.getEmail();
         String name = contactMessage.getName();
 
@@ -38,6 +42,7 @@ public class ContactController {
 
         Map<String, String> response = new HashMap<>();
         response.put("message", "Message submitted successfully");
+
 
         return ResponseEntity.ok(response);
     }

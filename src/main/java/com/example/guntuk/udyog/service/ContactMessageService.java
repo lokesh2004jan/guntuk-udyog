@@ -16,7 +16,10 @@ public class ContactMessageService {
 
     // Method to save the contact message
     public void saveContactMessage(ContactMessage contactMessage) {
+
         contactMessageRepository.save(contactMessage);
+
+
     }
     public List<ContactMessage> ShowAll(){
        List<ContactMessage>list= contactMessageRepository.findAll();
